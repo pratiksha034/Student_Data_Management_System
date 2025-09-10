@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Add Student</h2>
+<form method="POST">
+    PRN: <input type="number" name="prn" required><br>
+    Name: <input type="text" name="name" required><br>
+    Contact: <input type="number" name="contact" required><br>
+    DOB: <input type="text" name="dob" required><br>
+    Admission Date: <input type="text" name="admission_date" required><br>
+    City: <input type="text" name="city" required><br>
+    Branch: <input type="number" name="branch" required><br>
+    Percentage: <input type="number" step="0.01" name="percentage" required><br>
+    Scholarship: <input type="checkbox" name="scholarship" value="1"> Yes<br>
+    Category: <input type="text" name="category"><br>
+    <input type="submit" value="Add Student">
+</form>
+{% endblock %}

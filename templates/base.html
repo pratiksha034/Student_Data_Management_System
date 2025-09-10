@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <h1>Student Management System</h1>
+    <nav>
+        <a href="/">Home</a> |
+        <a href="/add">Add Student</a> |
+        <a href="/find">Find Student</a>
+
+
+
+        |
+
+    </nav>
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+
+</html>

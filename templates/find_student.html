@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center">Find Student</h2>
+
+    <!-- Search Form -->
+    <form method="POST" class="mb-4">
+        <div class="row">
+            <div class="col-md-4">
+                <label for="search_column" class="form-label">Search By:</label>
+                <select name="search_column" class="form-control" required>
+                    <option value="prn_number">PRN Number</option>
+                    <option value="name">Name</option>
+                    <option value="contact_number">Contact Number</option>
+                    <option value="dob">Date of Birth</option>
+                    <option value="admission_date">Admission Date</option>
+                    <option value="branch_code">Branch Code</option>
+                    <option value="percentage">Percentage</option>
+                    <option value="scholarship_eligible">Scholarship Eligible (1/0)</option>
+                    <option value="scholarship_category">Scholarship Category</option>
+                    <option value="city">City</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="search_value" class="form-label">Enter Value:</label>
+                <input type="text" name="search_value" class="form-control" required>
+            </div>
+            <div class="col-md-4 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary w-100">Search</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Results Table -->
+    {% if students %}
+    <h4 class="mb-3">Search Results:</h4>
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>PRN</th>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>DOB</th>
+                <th>Admission Date</th>
+                <th>Branch Code</th>
+                <th>Percentage</th>
+                <th>Scholarship Eligible</th>
+                <th>Scholarship Category</th>
+                <th>City</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.prn_number }}</td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.contact_number }}</td>
+                <td>{{ student.dob }}</td>
+                <td>{{ student.admission_date }}</td>
+                <td>{{ student.branch_code }}</td>
+                <td>{{ student.percentage }}</td>
+                <td>{{ 'Yes' if student.scholarship_eligible == 1 else 'No' }}</td>
+                <td>{{ student.scholarship_category }}</td>
+                <td>{{ student.city }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% elif request.method == 'POST' %}
+    <div class="alert alert-warning">No matching records found.</div>
+    {% endif %}
+
+
+
+
+</div>
+{% endblock %}
