@@ -1,20 +1,38 @@
 {% extends 'base.html' %}
 {% block content %}
 <h2>All Students</h2>
-<table border="1">
+
+{% if students %}
+<table border="1" cellpadding="5">
     <tr>
         <th>PRN</th>
         <th>Name</th>
-        <th>Branch</th>
+        <th>Contact</th>
+        <th>DOB</th>
+        <th>Admission Date</th>
+        <th>Branch Code</th>
         <th>Percentage</th>
+        <th>Scholarship Eligible</th>
+        <th>Scholarship Category</th>
+        <th>City</th>
     </tr>
     {% for student in students %}
     <tr>
         <td>{{ student.prn_number }}</td>
         <td>{{ student.name }}</td>
+        <td>{{ student.contact_number }}</td>
+        <td>{{ student.dob }}</td>
+        <td>{{ student.admission_date }}</td>
         <td>{{ student.branch_code }}</td>
         <td>{{ student.percentage }}</td>
+        <td>{{ student.scholarship_eligible }}</td>
+        <td>{{ student.scholarship_category }}</td>
+        <td>{{ student.city }}</td>
     </tr>
     {% endfor %}
 </table>
+{% else %}
+<p>No students found in database.</p>
+{% endif %}
+
 {% endblock %}

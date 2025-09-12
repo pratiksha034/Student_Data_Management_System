@@ -12,6 +12,12 @@
         <a href="/">Home</a> |
         <a href="/add">Add Student</a> |
         <a href="/find">Find Student</a>
+        <div class="export-links">
+            <a href="{{ url_for('export_csv') }}"><button>Export CSV</button></a>
+            <a href="{{ url_for('export_excel') }}"><button>Export Excel</button></a>
+            <a href="{{ url_for('export_pdf') }}"><button>Export PDF</button></a>
+        </div>
+
 
 
 
